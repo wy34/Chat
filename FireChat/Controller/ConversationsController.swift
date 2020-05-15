@@ -27,10 +27,29 @@ class ConversationsController: UIViewController {
     // MARK: - Helpers
     func configureUI() {
         view.backgroundColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "Messages"
+        
+        configureNavigationBar()
         
         let image = UIImage(systemName: "person.circle.fill")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(showProfile))
+    }
+    
+    func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        appearance.backgroundColor = .systemPurple
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        
+        
+        title = "Messages"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.isTranslucent = true
+        
+        navigationController?.navigationBar.overrideUserInterfaceStyle = .dark
     }
 }
