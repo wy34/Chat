@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
     
     // MARK: - Properties
     private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo"), for: .normal)
         button.tintColor = .white
         button.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
+        button.imageView?.contentMode = .scaleAspectFill
         button.clipsToBounds = true
         return button
     }()
@@ -57,6 +60,7 @@ class RegistrationController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         button.setHeight(height: 50)
+        button.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
         return button
     }()
     
@@ -100,6 +104,50 @@ class RegistrationController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func handleRegistration() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullName = fullNameTextField.text else { return }
+        guard let userName = userNameTextField.text?.lowercased() else { return }
+        guard let profileImage = profileImage else { return }
+        
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.5) else { return }
+        
+        let filename = NSUUID().uuidString
+        let ref = Storage.storage().reference().child("/profile_images/\(filename)")
+        
+        ref.putData(imageData, metadata: nil) { (meta, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return
+            }
+            
+            ref.downloadURL { (url, error) in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                
+                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                    if let error = error {
+                        debugPrint(error.localizedDescription)
+                        return
+                    }
+                    
+                    guard let uid = result?.user.uid else { return }
+                    
+                    let data = ["email": email, "password": password, "fullName": fullName, "userName": userName, "uid": uid, "profileImageUrl": profileImageUrl] as [String: Any]
+                    
+                    Firestore.firestore().collection("users").document(uid).setData(data) { (error) in
+                        if let error = error {
+                            debugPrint(error.localizedDescription)
+                            return
+                        }
+                        
+                        print("added user")
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Helpers
     func configureUI() {
         configureGradientLayer()
@@ -132,6 +180,7 @@ class RegistrationController: UIViewController {
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
+        self.profileImage = image
         plusPhotoButton.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
         plusPhotoButton.layer.borderColor = UIColor.white.cgColor
         plusPhotoButton.layer.borderWidth = 3.0
