@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2CC5A3AAA2BF1AC336F64C42 /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64611357F6C1706E913A43D9 /* Pods_FireChat.framework */; };
 		3DC76BC9247077E400510489 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76BC8247077E400510489 /* RegistrationViewModel.swift */; };
 		3DC76BCC247088E300510489 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DC76BCB247088E300510489 /* GoogleService-Info.plist */; };
+		3DC76BCE2470BD2300510489 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76BCD2470BD2300510489 /* AuthService.swift */; };
 		3DE9FAE4246F333E00AAF1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9FAE3246F333E00AAF1F1 /* AppDelegate.swift */; };
 		3DE9FAE6246F333E00AAF1F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9FAE5246F333E00AAF1F1 /* SceneDelegate.swift */; };
 		3DE9FAE8246F333E00AAF1F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9FAE7246F333E00AAF1F1 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* Begin PBXFileReference section */
 		3DC76BC8247077E400510489 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3DC76BCB247088E300510489 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3DC76BCD2470BD2300510489 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		3DE9FAE0246F333E00AAF1F1 /* FireChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DE9FAE3246F333E00AAF1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DE9FAE5246F333E00AAF1F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		3DE9FAFB246F337600AAF1F1 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				3DC76BCD2470BD2300510489 /* AuthService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -171,7 +174,6 @@
 				4D5AB4B4F956D220A6654EE1 /* Pods-FireChat.debug.xcconfig */,
 				5C451528A3156D95A4DCFA12 /* Pods-FireChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -302,6 +304,7 @@
 				3DE9FAE8246F333E00AAF1F1 /* ViewController.swift in Sources */,
 				3DC76BC9247077E400510489 /* RegistrationViewModel.swift in Sources */,
 				3DE9FB07246F6A9900AAF1F1 /* InputContainerView.swift in Sources */,
+				3DC76BCE2470BD2300510489 /* AuthService.swift in Sources */,
 				3DE9FAE4246F333E00AAF1F1 /* AppDelegate.swift in Sources */,
 				3DE9FAFE246F338C00AAF1F1 /* ConversationsController.swift in Sources */,
 				3DE9FAE6246F333E00AAF1F1 /* SceneDelegate.swift in Sources */,

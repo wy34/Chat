@@ -110,42 +110,15 @@ class RegistrationController: UIViewController {
         guard let fullName = fullNameTextField.text else { return }
         guard let userName = userNameTextField.text?.lowercased() else { return }
         guard let profileImage = profileImage else { return }
-        
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.5) else { return }
-        
-        let filename = NSUUID().uuidString
-        let ref = Storage.storage().reference().child("/profile_images/\(filename)")
-        
-        ref.putData(imageData, metadata: nil) { (meta, error) in
+
+        let credentials = RegistrationCredentials(email: email, password: password, fullName: fullName, userName: userName, profileImage: profileImage)
+        AuthService.shared.createUser(credentials: credentials) { (error) in
             if let error = error {
-                debugPrint(error.localizedDescription)
+                debugPrint("cannot create user")
                 return
             }
             
-            ref.downloadURL { (url, error) in
-                guard let profileImageUrl = url?.absoluteString else { return }
-                
-                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                    if let error = error {
-                        debugPrint(error.localizedDescription)
-                        return
-                    }
-                    
-                    guard let uid = result?.user.uid else { return }
-                    
-                    let data = ["email": email, "password": password, "fullName": fullName, "userName": userName, "uid": uid, "profileImageUrl": profileImageUrl] as [String: Any]
-                    
-                    Firestore.firestore().collection("users").document(uid).setData(data) { (error) in
-                        if let error = error {
-                            debugPrint(error.localizedDescription)
-                            return
-                        }
-                        
-                        print("added user")
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                }
-            }
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
