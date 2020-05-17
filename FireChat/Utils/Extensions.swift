@@ -7,7 +7,33 @@
 //
 
 import UIKit
+import Firebase
 import JGProgressHUD
+
+
+extension Auth {
+    func handleError(error: Error, vc: UIViewController) {
+        if let errorCode = AuthErrorCode(rawValue: error._code) {
+            let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(action)
+            vc.present(alert, animated: true, completion: nil)
+        }
+    }
+}
+
+extension AuthErrorCode {
+    var errorMessage: String {
+        switch self {
+        case .invalidEmail:
+            return "Invalid Email"
+        case .wrongPassword:
+            return "Incorrect Password"
+        default:
+            return "Sorry, something went wrong"
+        }
+    }
+}
 
 extension UIView {
     // MARK: - Basic anchor method
@@ -95,3 +121,5 @@ extension UIViewController {
         }
     }
 }
+
+

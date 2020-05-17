@@ -115,9 +115,10 @@ class RegistrationController: UIViewController {
         
         showLoader(true, withText: "Signing Up")
         AuthService.shared.createUser(credentials: credentials) { (error) in
-            if let _ = error {
+            if let error = error {
                 debugPrint("cannot create user")
                 self.showLoader(false)
+                Auth.auth().handleError(error: error, vc: self)
                 return
             }
             self.showLoader(false)

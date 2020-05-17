@@ -89,9 +89,10 @@ class LoginController: UIViewController {
         showLoader(true, withText: "Logging in")
         
         AuthService.shared.logUserIn(withEmail: email, withPassword: password) { (result, error) in
-            if let _ = error {
+            if let error = error {
                 debugPrint("erroring logging in user")
                 self.showLoader(false)
+                Auth.auth().handleError(error: error, vc: self)
                 return
             }
             
