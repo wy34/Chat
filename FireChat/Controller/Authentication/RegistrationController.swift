@@ -142,6 +142,7 @@ class RegistrationController: UIViewController {
                         }
                         
                         print("added user")
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }

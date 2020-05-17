@@ -32,6 +32,7 @@ class ConversationsController: UIViewController {
     func authenicateUser() {
         if Auth.auth().currentUser?.uid == nil {
             print("No logged in user")
+            presentLoginScreen()
         } else {
             print("there is a user")
         }
