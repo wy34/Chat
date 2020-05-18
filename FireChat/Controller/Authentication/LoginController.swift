@@ -61,6 +61,7 @@ class LoginController: UIViewController {
         button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,7 +130,7 @@ class LoginController: UIViewController {
     }
 }
 
-
+// MARK: - Protocol methods
 extension LoginController: AuthenticationControllerProtocol {
     func checkFormStatus() {
         if viewModel.formIsValid {

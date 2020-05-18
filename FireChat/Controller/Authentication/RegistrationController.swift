@@ -114,6 +114,7 @@ class RegistrationController: UIViewController {
         let credentials = RegistrationCredentials(email: email, password: password, fullName: fullName, userName: userName, profileImage: profileImage)
         
         showLoader(true, withText: "Signing Up")
+        
         AuthService.shared.createUser(credentials: credentials) { (error) in
             if let error = error {
                 debugPrint("cannot create user")

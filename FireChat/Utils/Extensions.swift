@@ -29,6 +29,8 @@ extension AuthErrorCode {
             return "Invalid Email"
         case .wrongPassword:
             return "Incorrect Password"
+        case .weakPassword:
+            return "Password must be at least 6 characters long."
         default:
             return "Sorry, something went wrong"
         }
@@ -36,7 +38,6 @@ extension AuthErrorCode {
 }
 
 extension UIView {
-    // MARK: - Basic anchor method
     func anchor(top: NSLayoutYAxisAnchor? = nil, left: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, right: NSLayoutXAxisAnchor? = nil, paddingTop: CGFloat = 0, paddingLeft: CGFloat = 0, paddingBottom: CGFloat = 0, paddingRight: CGFloat = 0, width: CGFloat? = nil, height: CGFloat? = nil) {
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -65,8 +66,7 @@ extension UIView {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
-    
-    // MARK: - Center Anchor Methods
+
     func centerX(inView view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -76,13 +76,12 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
     }
-    // MARK: - Dimension Anchor Methods
+
     func setDimensions(height: CGFloat, width: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
         heightAnchor.constraint(equalToConstant: height).isActive = true
         widthAnchor.constraint(equalToConstant: width).isActive = true
     }
-    
     
     func setHeight(height: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false

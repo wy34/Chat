@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2CC5A3AAA2BF1AC336F64C42 /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64611357F6C1706E913A43D9 /* Pods_FireChat.framework */; };
+		3D8D77CE247329E300F55622 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D77CD247329E300F55622 /* NewMessageController.swift */; };
 		3DC76BC9247077E400510489 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76BC8247077E400510489 /* RegistrationViewModel.swift */; };
 		3DC76BCC247088E300510489 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DC76BCB247088E300510489 /* GoogleService-Info.plist */; };
 		3DC76BCE2470BD2300510489 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76BCD2470BD2300510489 /* AuthService.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D8D77CD247329E300F55622 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		3DC76BC8247077E400510489 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3DC76BCB247088E300510489 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3DC76BCD2470BD2300510489 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				3DE9FAFF246F47CB00AAF1F1 /* Authentication */,
 				3DE9FAFD246F338C00AAF1F1 /* ConversationsController.swift */,
+				3D8D77CD247329E300F55622 /* NewMessageController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				3DE9FB05246F5A3C00AAF1F1 /* Extensions.swift in Sources */,
 				3DE9FB0B246F81D800AAF1F1 /* LoginViewModel.swift in Sources */,
 				3DE9FB09246F6E6D00AAF1F1 /* CustomTextField.swift in Sources */,
+				3D8D77CE247329E300F55622 /* NewMessageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
