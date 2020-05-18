@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2CC5A3AAA2BF1AC336F64C42 /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64611357F6C1706E913A43D9 /* Pods_FireChat.framework */; };
 		3D8D77CE247329E300F55622 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D77CD247329E300F55622 /* NewMessageController.swift */; };
+		3D8D77D02473316A00F55622 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D77CF2473316A00F55622 /* UserCell.swift */; };
 		3DC76BC9247077E400510489 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76BC8247077E400510489 /* RegistrationViewModel.swift */; };
 		3DC76BCC247088E300510489 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DC76BCB247088E300510489 /* GoogleService-Info.plist */; };
 		3DC76BCE2470BD2300510489 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC76BCD2470BD2300510489 /* AuthService.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		3D8D77CD247329E300F55622 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		3D8D77CF2473316A00F55622 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		3DC76BC8247077E400510489 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		3DC76BCB247088E300510489 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3DC76BCD2470BD2300510489 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				3DE9FB06246F6A9900AAF1F1 /* InputContainerView.swift */,
 				3DE9FB08246F6E6D00AAF1F1 /* CustomTextField.swift */,
+				3D8D77CF2473316A00F55622 /* UserCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				3DC76BCE2470BD2300510489 /* AuthService.swift in Sources */,
 				3DE9FAE4246F333E00AAF1F1 /* AppDelegate.swift in Sources */,
 				3DE9FAFE246F338C00AAF1F1 /* ConversationsController.swift in Sources */,
+				3D8D77D02473316A00F55622 /* UserCell.swift in Sources */,
 				3DE9FAE6246F333E00AAF1F1 /* SceneDelegate.swift in Sources */,
 				3DE9FB03246F47EE00AAF1F1 /* RegistrationController.swift in Sources */,
 				3DE9FB01246F47E000AAF1F1 /* LoginController.swift in Sources */,
