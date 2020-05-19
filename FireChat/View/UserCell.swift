@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import SDWebImage
 
 class UserCell: UITableViewCell {
     
     // MARK: - Properties
+    var user: User? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .systemPurple
@@ -55,4 +62,13 @@ class UserCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
+    func configure() {
+        guard let user = user else { return }
+        fullnameLabel.text = user.fullname
+        userNameLabel.text = user.username
+        
+        guard let url = URL(string: user.profileImageUrl) else { return }
+        profileImageView.sd_setImage(with: url)
+    }
 }
