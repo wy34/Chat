@@ -59,6 +59,7 @@ class RegistrationController: UIViewController {
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        button.isEnabled = false
         button.setHeight(height: 50)
         button.addTarget(self, action: #selector(handleRegistration), for: .touchUpInside)
         return button

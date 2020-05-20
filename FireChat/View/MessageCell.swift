@@ -10,6 +10,11 @@ import UIKit
 
 class MessageCell: UICollectionViewCell {
     // MARK: - Properties
+    var message: Message? {
+        didSet {
+            configure()
+        }
+    }
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .lightGray
@@ -22,7 +27,6 @@ class MessageCell: UICollectionViewCell {
         let tv = UITextView()
         tv.backgroundColor = .clear
         tv.textColor = .white
-        tv.text = "Testasfasfasfasdfasdfasd"
         tv.font = UIFont.systemFont(ofSize: 16)
         tv.isScrollEnabled =  false
         tv.isEditable = false
@@ -34,7 +38,6 @@ class MessageCell: UICollectionViewCell {
         view.backgroundColor = .systemPurple
         return view
     }()
-    
     
     // MARK: - Lifecycle
     override init(frame: CGRect) {
@@ -56,5 +59,15 @@ class MessageCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Helpers
+    func configure() {
+        guard let message = message else { return }
+        let viewModel = MessageViewModel(message: message)
+        
+        bubbleContainer.backgroundColor = viewModel.messageBackgroundColor
+        textView.textColor = viewModel.messageTextColor
+        textView.text = message.text
     }
 }
