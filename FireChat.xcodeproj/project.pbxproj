@@ -10,6 +10,7 @@
 		2CC5A3AAA2BF1AC336F64C42 /* Pods_FireChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64611357F6C1706E913A43D9 /* Pods_FireChat.framework */; };
 		3D460E20247467DE00EB0144 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D460E1F247467DE00EB0144 /* ChatViewController.swift */; };
 		3D460E222474749400EB0144 /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D460E212474749400EB0144 /* CustomInputAccessoryView.swift */; };
+		3D460E242474AF7100EB0144 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D460E232474AF7100EB0144 /* MessageCell.swift */; };
 		3D8D77CE247329E300F55622 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D77CD247329E300F55622 /* NewMessageController.swift */; };
 		3D8D77D02473316A00F55622 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D77CF2473316A00F55622 /* UserCell.swift */; };
 		3D8D77D224735A1800F55622 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8D77D124735A1800F55622 /* User.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		3D460E1F247467DE00EB0144 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		3D460E212474749400EB0144 /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
+		3D460E232474AF7100EB0144 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		3D8D77CD247329E300F55622 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		3D8D77CF2473316A00F55622 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		3D8D77D124735A1800F55622 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				3DE9FB08246F6E6D00AAF1F1 /* CustomTextField.swift */,
 				3D8D77CF2473316A00F55622 /* UserCell.swift */,
 				3D460E212474749400EB0144 /* CustomInputAccessoryView.swift */,
+				3D460E232474AF7100EB0144 /* MessageCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				3DE9FAE6246F333E00AAF1F1 /* SceneDelegate.swift in Sources */,
 				3D8D77D224735A1800F55622 /* User.swift in Sources */,
 				3D8D77D424735AA900F55622 /* Service.swift in Sources */,
+				3D460E242474AF7100EB0144 /* MessageCell.swift in Sources */,
 				3DE9FB03246F47EE00AAF1F1 /* RegistrationController.swift in Sources */,
 				3D460E20247467DE00EB0144 /* ChatViewController.swift in Sources */,
 				3DE9FB01246F47E000AAF1F1 /* LoginController.swift in Sources */,

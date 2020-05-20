@@ -19,6 +19,7 @@ class NewMessageController: UITableViewController {
     // MARK: - Properties
     private var users = [User]()
     weak var delegate: NewMessageControllerDelegate?
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
