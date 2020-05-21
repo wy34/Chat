@@ -82,5 +82,7 @@ class MessageCell: UICollectionViewCell {
         bubbleLeftAnchor.isActive = viewModel.leftAnchorAcive
         bubbleRightAnchor.isActive = viewModel.rightAnchorActive
         profileImageView.isHidden = viewModel.shouldHideProfileImage
+        
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
     }
 }
