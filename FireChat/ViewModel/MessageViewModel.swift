@@ -19,6 +19,18 @@ struct MessageViewModel {
         return message.isFromCurrentUser ? .black : .white
     }
     
+    var rightAnchorActive: Bool {
+        return message.isFromCurrentUser
+    }
+    
+    var leftAnchorAcive: Bool {
+        return !message.isFromCurrentUser
+    }
+    
+    var shouldHideProfileImage: Bool {
+        return message.isFromCurrentUser
+    }
+    
     init(message: Message) {
         self.message = message
     }
