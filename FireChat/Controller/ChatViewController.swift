@@ -51,6 +51,7 @@ class ChatViewController: UICollectionViewController {
         Service.fetchMessages(forUser: user) { (messages) in
             self.messages = messages
             self.collectionView.reloadData()
+            self.collectionView.scrollToItem(at: [0, self.messages.count - 1], at: .bottom, animated: true)
         }
     }
     
@@ -60,6 +61,7 @@ class ChatViewController: UICollectionViewController {
         configureNavigationBar(withTitle: user.username, prefersLargeTitle: false)
         collectionView.register(MessageCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
     }
 }
 
@@ -77,10 +79,17 @@ extension ChatViewController {
     }
 }
 
-
 extension ChatViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 50)
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let estimatedSizeCell = MessageCell(frame: frame)
+        estimatedSizeCell.message = messages[indexPath.row]
+        estimatedSizeCell.layoutIfNeeded()
+
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let estimatedSize = estimatedSizeCell.systemLayoutSizeFitting(targetSize)
+
+        return CGSize(width: view.frame.width, height: estimatedSize.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -88,7 +97,7 @@ extension ChatViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
+// MARK: - CustomInputAccesssoryViewDelegate methods
 extension ChatViewController: CustomInputAccessoryViewDelegate {
     func inputView(_ inputView: CustomInputAccessoryView, wantsToSend message: String) {
         Service.uploadMessage(message, to: user) {error in
