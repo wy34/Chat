@@ -25,6 +25,14 @@ struct Service {
         }
     }
     
+    static func fetchUser(withUid uid: String, completion: @escaping (User) -> Void) {
+        COLLECTION_USERS.document(uid).getDocument { (snapshot, error) in
+            guard let dictionary = snapshot?.data() else { return }
+            let user = User(data: dictionary)
+            completion(user)
+        }
+    }
+    
     static func fetchMessages(forUser user: User, completion: @escaping ([Message]) -> Void) {
         var messages = [Message]()
         
@@ -43,6 +51,27 @@ struct Service {
         }
     }
     
+    static func fetchConversations(completion: @escaping ([Conversation]) -> Void) {
+        var conversations = [Conversation]()
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let query = COLLECTION_MESSAGES.document(uid).collection("recent-messages").order(by: "timestamp")
+        
+        query.addSnapshotListener { (snapshot, error) in
+            snapshot?.documentChanges.forEach({ (change) in
+                let dictionary = change.document.data()
+                let message = Message(dictionary: dictionary)
+                
+                self.fetchUser(withUid: message.toId) { (user) in
+                    let conversation = Conversation(user: user, message: message)
+                    conversations.append(conversation)
+                    completion(conversations)
+                }
+            })
+        }
+    }
+    
     static func uploadMessage(_ message: String, to user: User, completion: ((Error?) -> Void)?) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
@@ -50,6 +79,9 @@ struct Service {
         
         COLLECTION_MESSAGES.document(currentUid).collection(user.uid).addDocument(data: data) { (_) in
             COLLECTION_MESSAGES.document(user.uid).collection(currentUid).addDocument(data: data, completion: completion)
+            
+            COLLECTION_MESSAGES.document(currentUid).collection("recent-messages").document(user.uid).setData(data)
+            COLLECTION_MESSAGES.document(user.uid).collection("recent-messages").document(currentUid).setData(data)
         }
     }
 }
