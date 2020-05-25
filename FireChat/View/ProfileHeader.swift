@@ -8,8 +8,19 @@
 
 import UIKit
 
+protocol ProfileHeaderDelegate: class {
+    func dismissController()
+}
+
 class ProfileHeader: UIView {
     // MARK: - Properties
+    var user: User? {
+        didSet {
+            populateUserData()
+        }
+    }
+    weak var delegate: ProfileHeaderDelegate?
+    
     private let dismissButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -87,8 +98,16 @@ class ProfileHeader: UIView {
         gradient.frame = bounds
     }
     
+    func populateUserData() {
+        guard let user = user else { return }
+        guard let url = URL(string: user.profileImageUrl) else { return }
+        
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = "@" + user.username
+        profileImageView.sd_setImage(with: url, completed: nil)
+    }
     // MARK: - Selectors
     @objc func handleDismissal() {
-        
+        delegate?.dismissController()
     }
 }
