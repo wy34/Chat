@@ -44,9 +44,10 @@ class ProfileController: UITableViewController {
     // MARK: - Api
     func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        showLoader(true)
         Service.fetchUser(withUid: uid) { (user) in
+            self.showLoader(false)
             self.user = user
-            print(user.username)
         }
     }
     
