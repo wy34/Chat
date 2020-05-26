@@ -40,6 +40,7 @@
 		3DFF163F247C62C10029813D /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF163E247C62C10029813D /* ProfileHeader.swift */; };
 		3DFF1641247C72470029813D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF1640247C72470029813D /* ProfileViewModel.swift */; };
 		3DFF1643247C760C0029813D /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF1642247C760C0029813D /* ProfileCell.swift */; };
+		3DFF1645247C96B10029813D /* ProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF1644247C96B10029813D /* ProfileFooter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		3DFF163E247C62C10029813D /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		3DFF1640247C72470029813D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		3DFF1642247C760C0029813D /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		3DFF1644247C96B10029813D /* ProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileFooter.swift; path = /Users/william/Desktop/FireChat/FireChat/View/ProfileFooter.swift; sourceTree = "<absolute>"; };
 		4D5AB4B4F956D220A6654EE1 /* Pods-FireChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.debug.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.debug.xcconfig"; sourceTree = "<group>"; };
 		5C451528A3156D95A4DCFA12 /* Pods-FireChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FireChat.release.xcconfig"; path = "Target Support Files/Pods-FireChat/Pods-FireChat.release.xcconfig"; sourceTree = "<group>"; };
 		64611357F6C1706E913A43D9 /* Pods_FireChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FireChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +163,7 @@
 				3DFF1638247C5B540029813D /* ConversationCell.swift */,
 				3DFF163E247C62C10029813D /* ProfileHeader.swift */,
 				3DFF1642247C760C0029813D /* ProfileCell.swift */,
+				3DFF1644247C96B10029813D /* ProfileFooter.swift */,
 				3DE9FAFC246F337C00AAF1F1 /* Utils */,
 			);
 			path = View;
@@ -357,6 +360,7 @@
 				3DE9FB07246F6A9900AAF1F1 /* InputContainerView.swift in Sources */,
 				3DC76BCE2470BD2300510489 /* AuthService.swift in Sources */,
 				3D460E282474C8EF00EB0144 /* MessageViewModel.swift in Sources */,
+				3DFF1645247C96B10029813D /* ProfileFooter.swift in Sources */,
 				3DE9FAE4246F333E00AAF1F1 /* AppDelegate.swift in Sources */,
 				3DE9FAFE246F338C00AAF1F1 /* ConversationsController.swift in Sources */,
 				3D8D77D02473316A00F55622 /* UserCell.swift in Sources */,

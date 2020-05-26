@@ -43,6 +43,7 @@ class ConversationsController: UIViewController {
     // MARK: - Selectors
     @objc func showProfile() {
         let controller = ProfileController(style: .insetGrouped)
+        controller.delegate = self
         let nav = UINavigationController(rootViewController: controller)
         nav.modalPresentationStyle = .fullScreen
         present(nav, animated: true, completion: nil)
@@ -146,10 +147,16 @@ extension ConversationsController: UITableViewDelegate {
     }
 }
 
-// MARK: - NewMessageController delegate methods
+// MARK: - Custom Protocol delegate methods
 extension ConversationsController: NewMessageControllerDelegate {
     func controller(_ controller: NewMessageController, wantsToStartChatWith user: User) {
-        controller.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
         showChatController(forUser: user)
+    }
+}
+
+extension ConversationsController: ProfileControllerDelegate {
+    func handleLogout() {
+        self.logOut()
     }
 }

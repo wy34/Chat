@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/william/Desktop/FireChat/FireChat/View/ProfileFooter.swift">
+   </FileRef>
+   <FileRef
       location = "group:FireChat.xcodeproj">
    </FileRef>
    <FileRef

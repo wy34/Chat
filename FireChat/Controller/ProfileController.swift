@@ -11,8 +11,13 @@ import Firebase
 
 private let reuseIdentifier = "profileCell"
 
+protocol ProfileControllerDelegate: class {
+    func handleLogout()
+}
+
 class ProfileController: UITableViewController {
     // MARK: - Properties
+    weak var delegate: ProfileControllerDelegate?
     private var user: User? {
         didSet {
             headerView.user = user
@@ -20,6 +25,8 @@ class ProfileController: UITableViewController {
     }
     
     private lazy var headerView = ProfileHeader(frame: .init(x: 0, y: 0, width: view.frame.width, height: 380))
+    
+    private let footerView = ProfileFooter()
     
     // MARK: - Lifecyces
     override func viewDidLoad() {
@@ -47,12 +54,15 @@ class ProfileController: UITableViewController {
     func configrueUI() {
         tableView.tableHeaderView = headerView
         tableView.register(ProfileCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.tableFooterView = UIView()
         tableView.contentInsetAdjustmentBehavior = .never
         headerView.delegate = self
         tableView.rowHeight = 64
         tableView.backgroundColor = .systemGroupedBackground
         
+        footerView.frame = .init(x: 0, y: 0, width: view.frame.width, height: 100)
+        tableView.tableFooterView = footerView
+        
+        footerView.delegate = self
     }
     
     // MARK: - Selectors
@@ -77,11 +87,31 @@ extension ProfileController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let viewModel = ProfileViewModel(rawValue: indexPath.row) else { return }
+        print(viewModel.description)
+    }
 }
 
 // MARK: - Custom Protocol Methods
 extension ProfileController: ProfileHeaderDelegate {
     func dismissController() {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileController: ProfileFooterDelegate {
+    func handleLogout() {
+        let alert = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
+            self.dismiss(animated: true) {
+                self.delegate?.handleLogout()
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
